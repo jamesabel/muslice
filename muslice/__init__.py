@@ -5,6 +5,7 @@ import collections
 import muslice.util
 
 __application_name__ = 'muslice'
+__author__ = 'James Abel'
 __application_version__ = '0.0.0'
 
 
