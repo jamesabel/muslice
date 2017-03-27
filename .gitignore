@@ -141,3 +141,4 @@ fabric.properties
 
 # jca
 output/
+.idea/
