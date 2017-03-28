@@ -18,6 +18,7 @@ def main():
 
     if args.verbose:
         muslice.logger.set_console_handler_level(logging.INFO)
+        muslice.logger.set_file_handler_level(logging.DEBUG)
 
     m = muslice.MuSlice(args.input, args.mono, args.convert, args.mix)
     m.run()

@@ -3,6 +3,7 @@ import os
 import collections
 
 import muslice.util
+import muslice.split_files
 
 __application_name__ = 'muslice'
 __author__ = 'James Abel'
@@ -24,7 +25,12 @@ class MuSlice:
         if not self._convert and not self._mix:
             print('Error - nothing to do!  Execute -h for help')
         if self._convert:
-            muslice.util.make_n_aural_files(self._groups, self._mono_files_folder)
+            if True:
+                max_threads = 3
+            else:
+                # code coverage, profiling
+                max_threads = 1
+            muslice.split_files.make_n_aural_files(self._groups, self._mono_files_folder, max_threads=max_threads)
         if self._mix:
             muslice.util.mix(self._mono_files_folder)
 
