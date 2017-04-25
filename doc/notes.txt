@@ -1,6 +1,0 @@
-
-- I tried the wavefile package but I got this error, so went back to the builtin wave library:
-
-Exception: could not import libsndfile dll, make sure the dll 'libsndfile.dylib' is in the path
-
--
