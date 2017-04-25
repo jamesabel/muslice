@@ -142,3 +142,9 @@ fabric.properties
 # jca
 output/
 .idea/
+repo_ignore/
+data/
+muslice_config.json
+log/
+doc/notes.txt
+doc/todo.txt

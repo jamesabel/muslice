@@ -9,19 +9,30 @@ _ch = None
 _fh = None
 
 
-def init():
-    global log, _ch, _fh
+def init(log_folder):
+    global log, _ch, _fh, _formatter
 
-    log = logging.getLogger(muslice.__application_name__)
-    log.setLevel(logging.INFO)
+    if log is None:
+        _formatter = logging.Formatter('%(asctime)s - %(name)s - %(filename)s - %(funcName)s - %(lineno)d - %(levelname)s - %(message)s')
 
-    _ch = logging.StreamHandler()
-    log.addHandler(_ch)
+        log = logging.getLogger(muslice.__application_name__)
+        log.setLevel(logging.DEBUG)
 
-    log_folder = 'log'
-    os.makedirs(log_folder, exist_ok=True)
-    _fh = logging.FileHandler(os.path.join(log_folder, muslice.__application_name__ + '.log'))
-    log.addHandler(_fh)
+        _ch = logging.StreamHandler()
+        _ch.setLevel(logging.INFO)
+        _ch.setFormatter(_formatter)
+        log.addHandler(_ch)
+
+        os.makedirs(log_folder, exist_ok=True)
+        log_file_path = os.path.join(log_folder, muslice.__application_name__ + '.log')
+        _fh = logging.FileHandler(log_file_path)
+        _fh.setLevel(logging.DEBUG)
+        _fh.setFormatter(_formatter)
+        log.addHandler(_fh)
+
+        log.info('log file path : %s (%s)' % (log_file_path, os.path.abspath(log_file_path)))
+    else:
+        log.info('log already set up (%s)' % log_folder)
 
 
 def set_console_handler_level(new_level):
