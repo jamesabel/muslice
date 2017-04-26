@@ -2,12 +2,14 @@
 import os
 import sys
 import multiprocessing
+import glob
 
 import muslice.config as config
 from test_muslice import tst_util
 from muslice import MuSlice
 from muslice import muslice_util
 from muslice import logger
+from muslice import folders
 
 TEST_NAME = 'test_slicing'
 
@@ -25,12 +27,12 @@ def test_slicing():
 
     logger.log.info('*** starting %s ***' % sys._getframe().f_code.co_name)
 
-    wav_files_folder = os.path.join(get_input_folder(), 'recordings')
-    os.makedirs(wav_files_folder, exist_ok=True)
+    recordings_folder = os.path.join(get_input_folder(), 'recordings')
+    os.makedirs(recordings_folder, exist_ok=True)
     os.makedirs(get_output_folder(), exist_ok=True)
 
     tst_config = config.Config(os.path.join(get_output_folder(), TEST_NAME + '.json'))
-    tst_config.set('source_folder', wav_files_folder)
+    tst_config.set('source_folder', recordings_folder)
     tst_config.set('output_folder', get_output_folder())
 
     variance = -10.0
@@ -39,8 +41,7 @@ def test_slicing():
     # recording name, duration (song length in sec), segements (number of songs)
     test_configs = [('0001', 2.5 * 60.0, 3),
                     ('0002', 3.0 * 60.0, 5),
-                    ('0003', 3.5 * 60.0, 10)
-                    ]
+                    ('0003', 3.5 * 60.0, 10)]
     seconds_per_pause = 20.0
 
     # if number of tests not given, run them all
@@ -58,7 +59,7 @@ def test_slicing():
         processes = []
         for wav_info in wav_infos:
             args = (
-                wav_files_folder,
+                recordings_folder,
                 48000,  # sample_rate in Hz
                 2,  # number_of_channels - stereo
                 segments,  # number_of_segments - i.e. songs
@@ -87,4 +88,14 @@ def test_slicing():
     tst_muslice = MuSlice(tst_config.config_file_path, False)
     tst_muslice.run()
 
-    # todo: check the output (perhaps have MuSlice write transition points to a .json file?)
+    # check that we get the right number of files out
+    wav_files_expected = []
+    for test_config in test_configs:
+        for segment_number in range(0, test_config[2]):
+            wav_files_expected.append('TASCAM_%s_%d_fp32.wav' % (test_config[0], segment_number))
+    assert(len(wav_files_expected) > 2)  # just check that we have created something in the expected list
+
+    wav_files_found = os.listdir(folders.segments_mix_wav_folder(get_output_folder()))
+    assert(len(wav_files_found) > 2)  # first, make sure we have some files
+
+    assert(wav_files_expected == wav_files_found)
