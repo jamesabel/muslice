@@ -1,7 +1,7 @@
 
 ## muslice ##
 
-Music Slicer program by [James Abel](www.abel.co).
+Music Slicer program by [James Abel](http://www.abel.co).
 
 Slices and remixes .wav files from a 4 channel TASCAM DR-40 portable recorder.
 
