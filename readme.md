@@ -5,7 +5,7 @@ Music Slicer program
 
 Slices and remixes .wav files from a 4 channel TASCAM DR-40 portable recorder.
 
-![Tascam DR-40](http://tascam.com/content/images/universal/product_detail/706/large/dr-40_ab_front.jpg | height=100)
+![Tascam DR-40](http://tascam.com/content/images/universal/product_detail/706/large/dr-40_ab_front.jpg)
 
 The target application is where you set up the DR-40 to recorder to continually record a live performance.  
 Here are the steps:

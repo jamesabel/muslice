@@ -35,6 +35,13 @@ def test_slicing():
     tst_config.set('source_folder', recordings_folder)
     tst_config.set('output_folder', get_output_folder())
 
+    # set to True to run single threaded for test coverage
+    if True:
+        s = "*** RUNNING SINGLE THREADED FOR TEST COVERAGE ***"
+        logger.log.info(s)
+        print(s)
+        tst_config.set('max_threads', 1)
+
     variance = -10.0
 
     # order:
