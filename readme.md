@@ -31,7 +31,8 @@ Here are the steps:
 
 First, create a Python virtual environment (AKA virtualenv or venv).  Use `make_venv.sh` to do this.  Then run 
 `muslice.sh`.  It will create an initial 'shell' `muslice_config.json`.  Manually edit `muslice_config.json` 
-to configure the input and output folders, as well as what recordings to ignore.
+to configure the input and output folders, as well as what recordings to ignore.  Then run `muslice` again 
+to do the actual processing.
 
 ## Requirements ##
 
