@@ -9,7 +9,7 @@ Slices and remixes .wav files from a 4 channel TASCAM DR-40 portable recorder.
 
 The target application is where you set up the DR-40 to recorder to continually record a live performance and 
 you'd like an automated program to slice the .wav files up into individual songs as well as create an initial 
-stereo mix as standard .mp3 files.  You can them listen to these .mp3 mixes to see which songs you want to go 
+stereo mix as standard .mp3 files.  You can then listen to these .mp3 mixes to see which songs you want to go 
 back to and manually remix, enhance and master.
   
 Here are the steps:
