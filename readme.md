@@ -21,7 +21,8 @@ Here are the steps:
   - Convert the 2 stereo channels to 4 mono channels.
   - Calculate a 'VU meter' style time series of levels in the form of .png image files and .json text files.
   - Normalize the channel volume levels for analysis, which is useful if the individual channels were recorded 
-    at different levels.
+    at different levels.  Note that this is only used to determine the song breaks and to create the initial stereo
+    mix (the contents of the 4 mono .wav files is exactly the same as the original from the DR-40).
   - Determine where the song breaks are and slice the input .wav files into segments (songs).  These .wav file can 
     also be imported into your DAW (e.g. ProTools) for manual remixing, enhancement and mastering.
   - Create an initial stereo mix in both .wav and .mp3 formats.
