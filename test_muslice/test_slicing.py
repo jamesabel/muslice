@@ -37,7 +37,7 @@ def test_slicing():
 
     # set to True to run single threaded for test coverage
     if True:
-        s = "*** RUNNING SINGLE THREADED FOR TEST COVERAGE ***"
+        s = "** RUNNING SINGLE THREADED FOR TEST COVERAGE **"
         logger.log.info(s)
         print(s)
         tst_config.set('max_threads', 1)
